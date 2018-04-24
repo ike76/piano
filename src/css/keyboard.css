@@ -1,0 +1,13 @@
+.white {
+  fill: white;
+}
+.black {
+  fill: black;
+}
+
+.white:hover {
+  fill: lightgrey;
+}
+.black:hover {
+  fill: darkgrey;
+}
