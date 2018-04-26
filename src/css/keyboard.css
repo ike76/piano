@@ -7,7 +7,42 @@
 
 .white:hover {
   fill: lightgrey;
+  stroke: rgb(233, 184, 20);
+  stroke-width: 3;
 }
 .black:hover {
-  fill: darkgrey;
+  fill: lightgrey;
+  stroke: yellow;
+  stroke-width: 3;
+}
+.keyboard-frame {
+  text-align: center;
+}
+.keyboard {
+  position: relative;
+  text-align: center;
+  display: inline-block;
+}
+
+.blue {
+  fill: #;
+}
+
+.blue {
+  fill: #44b3c2;
+}
+.orange {
+  fill: #f1a94e;
+}
+.red {
+  fill: #e45641;
+}
+.brown {
+  fill: #5d4c46;
+}
+.grey {
+  fill: #7b8d8e;
+}
+.ivory {
+  fill: #f2edd8;
 }

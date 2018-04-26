@@ -1,5 +1,3 @@
-import React from "react";
-
 let Synth;
 let AudioSynth;
 let AudioSynthInstrument;
@@ -132,7 +130,7 @@ let AudioSynthInstrument;
     var thisSound = this._sounds[sound];
     if (!thisSound) {
       for (var i = 0; i < this._sounds.length; i++) {
-        if (this._sounds[i].name == sound) {
+        if (this._sounds[i].name === sound) {
           thisSound = this._sounds[i];
           sound = i;
           break;
@@ -147,10 +145,10 @@ let AudioSynthInstrument;
     octave |= 0;
     octave = Math.min(8, Math.max(1, octave));
     var time = !duration ? 2 : parseFloat(duration);
-    if (typeof this._notes[note] == "undefined") {
+    if (typeof this._notes[note] === "undefined") {
       throw new Error(note + " is not a valid note.");
     }
-    if (typeof this._fileCache[sound][octave - 1][note][time] != "undefined") {
+    if (typeof this._fileCache[sound][octave - 1][note][time] !== "undefined") {
       if (this._debug) {
         console.log(new Date().valueOf() - t, "ms to retrieve (cached)");
       }
@@ -166,7 +164,7 @@ let AudioSynthInstrument;
       var waveFunc = thisSound.wave;
       var waveBind = { modulate: this._mod, vars: this._temp };
       var val = 0;
-      var curVol = 0;
+      // var curVol = 0;
 
       var data = new Uint8Array(
         new ArrayBuffer(Math.ceil(sampleRate * time * 2))
@@ -239,9 +237,9 @@ let AudioSynthInstrument;
   setPub("createInstrument", function(sound) {
     var n = 0;
     var found = false;
-    if (typeof sound == "string") {
+    if (typeof sound === "string") {
       for (var i = 0; i < this._sounds.length; i++) {
-        if (this._sounds[i].name == sound) {
+        if (this._sounds[i].name === sound) {
           found = true;
           n = i;
           break;
@@ -286,7 +284,7 @@ let AudioSynthInstrument;
   setPub("loadModulationFunction", function() {
     for (var i = 0, len = arguments.length; i < len; i++) {
       let f = arguments[i];
-      if (typeof f != "function") {
+      if (typeof f !== "function") {
         throw new Error("Invalid modulation function.");
       }
       this._mod.push(f);
@@ -382,10 +380,10 @@ Synth.loadSoundProfile(
     wave: function(i, sampleRate, frequency) {
       var vars = this.vars;
       vars.valueTable = !vars.valueTable ? [] : vars.valueTable;
-      if (typeof vars.playVal == "undefined") {
+      if (typeof vars.playVal === "undefined") {
         vars.playVal = 0;
       }
-      if (typeof vars.periodCount == "undefined") {
+      if (typeof vars.periodCount === "undefined") {
         vars.periodCount = 0;
       }
 

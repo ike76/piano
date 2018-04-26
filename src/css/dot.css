@@ -1,0 +1,12 @@
+.dot {
+  position: absolute;
+
+  font-size: 2.5rem;
+}
+
+.orange {
+  color: orange;
+}
+.blue {
+  color: rgb(102, 102, 255);
+}
