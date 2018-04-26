@@ -25,3 +25,8 @@ export const setCorrectAnswer = correctAnswer => ({
   type: SET_CORRECT_ANSWER,
   correctAnswer
 });
+
+export const RESET_KEYBOARD = "RESET_KEYBOARD";
+export const resetKeyboard = {
+  type: RESET_KEYBOARD
+};

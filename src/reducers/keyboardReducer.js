@@ -7,7 +7,6 @@ const initialState = {
   keyColor: {},
   questionDots: [],
   answerDots: [],
-  show: "question",
   listening: false
 };
 
@@ -34,6 +33,9 @@ export default function keyboardReducer(store = initialState, action) {
   }
   if (action.type === actions.MAC_CLICKED_KEY) {
     playNote(action.keyName);
+  }
+  if (action.type === actions.RESET_KEYBOARD) {
+    return { ...store, questionDots: [], answerDots: [] };
   }
   return store;
 }

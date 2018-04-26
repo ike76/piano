@@ -6,7 +6,8 @@ import {
   showQuestion,
   macClickedKey,
   listen,
-  setCorrectAnswer
+  setCorrectAnswer,
+  resetKeyboard
 } from "../actions";
 
 export function Question(props) {
@@ -27,6 +28,10 @@ export function Question(props) {
           correctAnswer: ["A1"]
         },
         {
+          questionNotes: [{ note: "D2" }],
+          correctAnswer: ["D1"]
+        },
+        {
           questionNotes: [{ note: "E1" }],
           correctAnswer: ["E2"]
         }
@@ -36,6 +41,7 @@ export function Question(props) {
   const currentLesson = octavesChapter[props.currentLesson];
 
   const handleGo = () => {
+    handleReset();
     const noteName = currentLesson.tests[props.testNum].questionNotes[0].note;
     console.log("notename:", noteName);
     props.dispatch(
@@ -46,6 +52,10 @@ export function Question(props) {
     );
     props.dispatch(macClickedKey(noteName));
     props.dispatch(listen);
+  };
+
+  const handleReset = () => {
+    props.dispatch(resetKeyboard);
   };
 
   return (
@@ -66,7 +76,8 @@ const mapStateToProps = state => ({
   currentLesson: state.test.currentLesson,
   correctAnswer: state.test.correctAnswer,
   studentAnswer: state.test.studentAnswer,
-  testNum: state.test.testNum
+  testNum: state.test.testNum,
+  listening: state.test.listening
 });
 
 export default connect(mapStateToProps)(Question);
