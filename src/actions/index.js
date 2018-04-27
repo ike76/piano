@@ -1,32 +1,15 @@
-export const SHOW_QUESTION = "SHOW_QUESTION";
-export const showQuestion = questionNotes => ({
-  type: SHOW_QUESTION,
-  questionNotes
+export const SET_CHAPTER = "SET_CHAPTER";
+export const setChapter = chapterNumber => ({
+  type: SET_CHAPTER,
+  chapterNumber
 });
-export const LISTEN = "LISTEN";
-export const listen = {
-  type: LISTEN
-};
-
-export const USER_CLICKED_KEY = "USER_CLICKED_KEY";
-export const userClickedKey = keyName => ({
-  type: USER_CLICKED_KEY,
-  keyName
+export const SET_LESSON = "SET_LESSON";
+export const setLesson = lessonNumber => ({
+  type: SET_LESSON,
+  lessonNumber
 });
-
-export const MAC_CLICKED_KEY = "MAC_CLICKED_KEY";
-export const macClickedKey = keyName => ({
-  type: MAC_CLICKED_KEY,
-  keyName
+export const SET_QUESTION = "SET_QUESTION";
+export const setQuestion = questionNumber => ({
+  type: SET_QUESTION,
+  questionNumber
 });
-
-export const SET_CORRECT_ANSWER = "SET_CORRECT_ANSWER";
-export const setCorrectAnswer = correctAnswer => ({
-  type: SET_CORRECT_ANSWER,
-  correctAnswer
-});
-
-export const RESET_KEYBOARD = "RESET_KEYBOARD";
-export const resetKeyboard = {
-  type: RESET_KEYBOARD
-};

@@ -1,11 +1,22 @@
 // TODO turn this into an object {octaves: etc}
-
-export const octavesChapter = [
-  {
+const octaves = (() => {
+  return {
     title: "OCTAVES",
-    information: `There are many keys on a piano (up to 88!)
-          but really, there are only 12. after that they repeat.  \n
-          Notice how the black keys are a repeating pattern of 2 - 3 - 2 - 3 etc?`,
+    url: "/octaves",
+    learnSections: [
+      {
+        infoLines: [
+          `There are many keys on a piano (up to 88!)`,
+          `but really, there are only 12. after that they repeat. `,
+          `Notice how the black keys are a repeating pattern of 2 - 3 - 2 - 3 etc?`
+        ],
+        images: [
+          { url: "twosAndThrees.png", height: 200, className: "myimage" }
+        ]
+      }
+    ],
+    buttonText: "GOT IT",
+
     cta: `I'll select a note and you choose the matching one`,
     tests: [
       {
@@ -25,5 +36,7 @@ export const octavesChapter = [
         correctAnswer: ["E2"]
       }
     ]
-  }
-];
+  };
+})();
+
+export { octaves };

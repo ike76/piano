@@ -9,11 +9,13 @@
   fill: lightgrey;
   stroke: rgb(233, 184, 20);
   stroke-width: 3;
+  cursor: pointer;
 }
 .black:hover {
   fill: lightgrey;
   stroke: yellow;
   stroke-width: 3;
+  cursor: pointer;
 }
 .keyboard-frame {
   text-align: center;

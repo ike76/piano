@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import Key from "./Key";
 import Dot from "./Dot";
+import notesList from "../js/notesList";
+
 import "../css/keyboard.css";
-import { connect } from "react-redux";
-export class Keyboard extends Component {
+
+export default class Keyboard extends Component {
   render() {
     return (
       <div className="keyboard-frame">
@@ -14,7 +16,8 @@ export class Keyboard extends Component {
                 key={key}
                 keyName={key}
                 className={"orange"}
-                shape={"fisheye"}
+                shape={"circle"}
+                userPlayKey={this.props.userPlayKey}
               />
             );
           })}
@@ -24,38 +27,39 @@ export class Keyboard extends Component {
                 key={key}
                 keyName={key}
                 className={"blue"}
-                shape={"fisheye"}
+                shape={"filledCircle"}
+                userPlayKey={this.props.userPlayKey}
               />
             );
           })}
           <svg width="700px" height="300px" viewBox="0 0 700 300" version="1.1">
             <g id="octave-1">
-              <Key keypath="C" classes={"white"} octave={1} />
-              <Key keypath="C#" classes={"black"} octave={1} />
-              <Key keypath="D" classes={"white"} octave={1} />
-              <Key keypath="D#" classes={"black"} octave={1} />
-              <Key keypath="E" classes={"white"} octave={1} />
-              <Key keypath="F" classes={"white"} octave={1} />
-              <Key keypath="F#" classes={"black"} octave={1} />
-              <Key keypath="G" classes={"white"} octave={1} />
-              <Key keypath="G#" classes={"black"} octave={1} />
-              <Key keypath="A" classes={"white"} octave={1} />
-              <Key keypath="A#" classes={"black"} octave={1} />
-              <Key keypath="B" classes={"white"} octave={1} />
+              {notesList
+                .filter(note => note.octave === 1)
+                .map(key => (
+                  <Key
+                    key={key.noteName + key.octave}
+                    noteName={key.noteName}
+                    keypath={key.note}
+                    classes={key.color}
+                    octave={key.octave}
+                    userPlayKey={this.props.userPlayKey}
+                  />
+                ))}
             </g>
             <g id="octave-2" transform="translate(350.5,0)">
-              <Key keypath="C" classes={"white"} octave={2} />
-              <Key keypath="C#" classes={"black"} octave={2} />
-              <Key keypath="D" classes={"white"} octave={2} />
-              <Key keypath="D#" classes={"black"} octave={2} />
-              <Key keypath="E" classes={"white"} octave={2} />
-              <Key keypath="F" classes={"white"} octave={2} />
-              <Key keypath="F#" classes={"black"} octave={2} />
-              <Key keypath="G" classes={"white"} octave={2} />
-              <Key keypath="G#" classes={"black"} octave={2} />
-              <Key keypath="A" classes={"white"} octave={2} />
-              <Key keypath="A#" classes={"black"} octave={2} />
-              <Key keypath="B" classes={"white"} octave={2} />
+              {notesList
+                .filter(note => note.octave === 2)
+                .map(key => (
+                  <Key
+                    key={key.noteName + key.octave}
+                    noteName={key.noteName}
+                    keypath={key.note}
+                    classes={key.color}
+                    octave={key.octave}
+                    userPlayKey={this.props.userPlayKey}
+                  />
+                ))}
             </g>
           </svg>
         </div>
@@ -63,10 +67,3 @@ export class Keyboard extends Component {
     );
   }
 }
-
-const mapStateToProps = state => ({
-  questionDots: state.questionDots,
-  answerDots: state.answerDots
-});
-
-export default connect(mapStateToProps)(Keyboard);

@@ -1,8 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
-import { userClickedKey } from "../actions";
 
-export function Key(props) {
+export default function Key(props) {
   const keyPaths = {
     C:
       "M0,0 L25.9914219,0 L25.9914219,203.473828 L47.1798926,203.473828 L47.1798926,289.050633 C47.1798926,294.57348 42.7027401,299.050633 37.1798926,299.050633 L10,299.050633 C4.4771525,299.050633 2.45271059e-15,294.57348 1.77635684e-15,289.050633 L0,0 Z",
@@ -30,20 +28,14 @@ export function Key(props) {
       "M291.257203,0 L320.194204,0 L320.194204,197.158228 C320.194204,199.919652 317.955628,202.158228 315.194204,202.158228 L296.257203,202.158228 C293.49578,202.158228 291.257203,199.919652 291.257203,197.158228 L291.257203,0 Z"
   };
 
-  const keyName = `${props.keypath}${props.octave}`;
-
   return (
     <path
       d={keyPaths[props.keypath]}
-      id={keyName}
+      id={props.note}
       className={`${props.classes}`}
       stroke="#000000"
       fill="#FFFFFF"
-      // onTouchStart={handleClick}
-      onMouseDown={() => props.dispatch(userClickedKey(keyName))}
+      onMouseDown={() => props.userPlayKey(props.noteName)}
     />
   );
 }
-
-const mapStateToProps = state => ({});
-export default connect(mapStateToProps)(Key);

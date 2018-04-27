@@ -1,0 +1,16 @@
+.controlBox {
+  display: grid;
+  grid-template-columns: 1fr repeat(2, 3rem);
+}
+.controlButton {
+  padding: 2px 5px;
+}
+.controlPanel {
+  display: grid;
+  border: 1px lightblue solid;
+  padding: 0.5rem;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  font-size: small;
+}

@@ -3,20 +3,34 @@ import "../css/dot.css";
 import keyDotPositions from "../js/keyDotPositions";
 
 const shapes = {
-  fisheye: "\u25C9",
-  circle: "\u2299",
-  asterisk: "\u229B"
+  circle: "◎",
+  filledCircle: "✪",
+  wrong: "✘"
 };
-export default function Dot(params) {
-  const transX = keyDotPositions[params.keyName].x;
-  const transY = keyDotPositions[params.keyName].y;
+// const shapes = {
+//   fisheye: "\u25C9",
+//   circle: "\u2299",
+//   asterisk: "\u229B",
+//   circleDot: "\u2299"
+// };
+const offset = {
+  circle: 0,
+  filledCircle: 4
+};
+export default function Dot(props) {
+  const transX = keyDotPositions[props.keyName].x;
+  const transY = keyDotPositions[props.keyName].y;
 
   return (
     <div
-      className={`dot white ${params.className}`}
-      style={{ transform: `translate(${transX}px, ${transY}px)` }}
+      className={`dot white ${props.className}`}
+      style={{
+        transform: `translate(${transX + offset[props.shape]}px, ${transY +
+          offset[props.shape]}px)`
+      }}
+      onClick={() => props.userPlayKey(props.keyName)}
     >
-      {shapes[params.shape]}
+      {shapes[props.shape]}
     </div>
   );
 }

@@ -466,3 +466,11 @@ Synth.loadSoundProfile(
 );
 
 export default Synth;
+
+const piano = Synth.createInstrument("piano");
+
+export const playSound = noteName => {
+  let octave = Number(noteName.split("").pop());
+  let note = noteName.slice(0, -1);
+  piano.play(note, octave + 2, 2);
+};
