@@ -3,11 +3,8 @@ import Synth from "../js/audiosynth";
 const piano = Synth.createInstrument("piano");
 
 const initialState = {
-  playedKeys: [],
-  keyColor: {},
   questionDots: [],
-  answerDots: [],
-  listening: false
+  answerDots: []
 };
 
 function playNote(keyName) {

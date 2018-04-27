@@ -65,8 +65,8 @@ export class Keyboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  questionDots: state.keyboard.questionDots,
-  answerDots: state.keyboard.answerDots
+  questionDots: state.questionDots,
+  answerDots: state.answerDots
 });
 
 export default connect(mapStateToProps)(Keyboard);

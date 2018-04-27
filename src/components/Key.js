@@ -36,7 +36,7 @@ export function Key(props) {
     <path
       d={keyPaths[props.keypath]}
       id={keyName}
-      className={`${props.classes} ${props.keyColors[keyName]}`}
+      className={`${props.classes}`}
       stroke="#000000"
       fill="#FFFFFF"
       // onTouchStart={handleClick}
@@ -45,7 +45,5 @@ export function Key(props) {
   );
 }
 
-const mapStateToProps = state => ({
-  keyColors: state.keyboard.keyColor
-});
+const mapStateToProps = state => ({});
 export default connect(mapStateToProps)(Key);

@@ -17,6 +17,7 @@
 }
 .keyboard-frame {
   text-align: center;
+  margin: 2rem;
 }
 .keyboard {
   position: relative;
