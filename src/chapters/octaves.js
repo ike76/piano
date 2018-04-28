@@ -3,19 +3,19 @@ const octaves = (() => {
   return {
     title: "OCTAVES",
     url: "/octaves",
-    learnSections: [
+    lessons: [
       {
         infoLines: [
           `There are many keys on a piano (up to 88!)`,
-          `but really, there are only 12. after that they repeat. `,
+          `But you only have to learn 12. after that they repeat. `,
           `Notice how the black keys are a repeating pattern of 2 - 3 - 2 - 3 etc?`
         ],
         images: [
           { url: "twosAndThrees.png", height: 200, className: "myimage" }
-        ]
+        ],
+        buttonText: "GOT IT"
       }
     ],
-    buttonText: "GOT IT",
 
     cta: `I'll select a note and you choose the matching one`,
     tests: [

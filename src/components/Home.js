@@ -49,7 +49,7 @@ export class Home extends Component {
     this.setState({ cycle: name });
   }
   render() {
-    const chapter = chapters.chapters[this.props.currentChapter];
+    const chapter = chapters[this.props.currentChapter];
     return (
       <div className="">
         <main>
@@ -78,8 +78,16 @@ export class Home extends Component {
               />
             ))}
           </div>
-          {this.state.cycle === "learn" ? <Learn chapter={chapter} /> : ""}
 
+          {this.state.cycle === "learn" ? (
+            <Learn
+              chapter={chapter}
+              cb={this.setCurrentLesson}
+              currentLesson={this.props.currentLesson}
+            />
+          ) : (
+            ""
+          )}
           {["setup", "loop"].includes(this.state.cycle) ? (
             <Keyboard
               questionDots={this.state.questionDots}

@@ -1,28 +1,31 @@
-const shapes = (() => {
-  return {
-    title: "SHAPES",
-    url: "/shapes",
-    information: `shapes text`,
-    cta: `shapes CTA`,
-    tests: [
-      {
-        questionNotes: [{ note: "F#1" }],
-        correctAnswer: ["F#2"]
-      },
-      {
-        questionNotes: [{ note: "A2" }],
-        correctAnswer: ["A1"]
-      },
-      {
-        questionNotes: [{ note: "D2" }],
-        correctAnswer: ["D1"]
-      },
-      {
-        questionNotes: [{ note: "E1" }],
-        correctAnswer: ["E2"]
-      }
-    ]
-  };
-})();
+import React from "react";
+
+const shapes = {
+  title: "SHAPES",
+  lessons: [
+    {
+      pages: [
+        {
+          jsx: (
+            <div>
+              <p>i hope you're learning a lot about shapes</p>
+            </div>
+          ),
+          buttonText: "next"
+        },
+        {
+          jsx: (
+            <div>
+              <h1>Further information</h1>;
+              <p>this is the 2nd page of this shapes content</p>
+            </div>
+          ),
+          buttonText: "continue"
+        }
+      ] // end pages array
+    } // end lesson 0
+  ], // end lessons array
+  test: {}
+};
 
 export { shapes };

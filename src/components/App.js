@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from "./Home";
-
+import Chapter from "./Chapter";
 export default function App(props) {
   return (
     <Router>
@@ -11,7 +11,11 @@ export default function App(props) {
         </header>
         <main>
           <Route exact path="/" component={Home} />
-          <Route exact path="/chapters/:chapterName" component={Home} />
+          <Route
+            exact
+            path="/chapters/:chapterName/:lessonNumber"
+            component={Chapter}
+          />
         </main>
       </div>
     </Router>
