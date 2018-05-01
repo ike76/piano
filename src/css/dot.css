@@ -6,8 +6,12 @@
 
 .orange {
   color: orange;
+  transition: 2s;
 }
 .blue {
   color: rgb(102, 102, 255);
 }
 /*  */
+.red {
+  color: red;
+}

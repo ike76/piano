@@ -1,7 +1,7 @@
-import * as actions from "../actions";
-import chapters from "../chapters";
+// import * as actions from "../actions";
+// import chapters from "../chapters";
 
-const chapterLength = chapters.length;
+// const chapterLength = chapters.length;
 
 const initialState = {
   currentChapter: 0,

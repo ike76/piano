@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Key from "./Key";
 import Dot from "./Dot";
 import notesList from "../js/notesList";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import "../css/keyboard.css";
 
@@ -10,17 +11,14 @@ export default class Keyboard extends Component {
     return (
       <div className="keyboard-frame">
         <div className="keyboard">
-          {this.props.questionDots.map(key => {
-            return (
-              <Dot
-                key={key}
-                keyName={key}
-                className={"orange"}
-                shape={"circle"}
-                userPlayKey={this.props.userPlayKey}
-              />
-            );
-          })}
+          {this.props.questionDots.map(key => (
+            <Dot
+              keyName={key}
+              className={"orange "}
+              shape={"circle"}
+              userPlayKey={this.props.userPlayKey}
+            />
+          ))}
           {this.props.answerDots.map(key => {
             return (
               <Dot
@@ -32,6 +30,42 @@ export default class Keyboard extends Component {
               />
             );
           })}
+          {this.props.correctDots.map(key => {
+            return (
+              <Dot
+                key={key}
+                keyName={key}
+                className={"blue tranform"}
+                shape={"smile"}
+                userPlayKey={() => null}
+                transform={true}
+                transformKey={1}
+              />
+            );
+          })}
+          {this.props.blinkingDots.map(key => {
+            return (
+              <Dot
+                key={key}
+                keyName={key}
+                className={"red blink"}
+                shape={"circle"}
+                userPlayKey={() => null}
+              />
+            );
+          })}
+          {this.props.wrongDots.map(key => {
+            return (
+              <Dot
+                key={key}
+                keyName={key}
+                className={"red "}
+                shape={"wrong"}
+                userPlayKey={() => null}
+              />
+            );
+          })}
+
           <svg width="700px" height="300px" viewBox="0 0 700 300" version="1.1">
             <g id="octave-1">
               {notesList

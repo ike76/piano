@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Keyboard from "./Keyboard";
 import ControlBox from "./ControlBox";
 import CycleButton from "./CycleButton";
-import Learn from "./Learn";
 import { Link } from "react-router-dom";
 import { playSound } from "../js/audiosynth";
 import * as actions from "../actions";
@@ -79,15 +78,6 @@ export class Home extends Component {
             ))}
           </div>
 
-          {this.state.cycle === "learn" ? (
-            <Learn
-              chapter={chapter}
-              cb={this.setCurrentLesson}
-              currentLesson={this.props.currentLesson}
-            />
-          ) : (
-            ""
-          )}
           {["setup", "loop"].includes(this.state.cycle) ? (
             <Keyboard
               questionDots={this.state.questionDots}

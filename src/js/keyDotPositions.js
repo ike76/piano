@@ -22,7 +22,8 @@ const keyDotPositions = {
   "D#2": { x: 436, y: 140 },
   "F#2": { x: 523, y: 140 },
   "G#2": { x: 579, y: 140 },
-  "A#2": { x: 637, y: 140 }
+  "A#2": { x: 637, y: 140 },
+  success1: { x: -72, y: 227 }
 };
 
 export default keyDotPositions;

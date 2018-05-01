@@ -5,7 +5,8 @@ import keyDotPositions from "../js/keyDotPositions";
 const shapes = {
   circle: "◎",
   filledCircle: "✪",
-  wrong: "✘"
+  wrong: "☠️",
+  smile: "🤩"
 };
 // const shapes = {
 //   fisheye: "\u25C9",
@@ -13,9 +14,12 @@ const shapes = {
 //   asterisk: "\u229B",
 //   circleDot: "\u2299"
 // };
+
 const offset = {
   circle: 0,
-  filledCircle: 4
+  filledCircle: 4,
+  smile: 0,
+  wrong: 0
 };
 export default function Dot(props) {
   const transX = keyDotPositions[props.keyName].x;
@@ -26,7 +30,8 @@ export default function Dot(props) {
       className={`dot white ${props.className}`}
       style={{
         transform: `translate(${transX + offset[props.shape]}px, ${transY +
-          offset[props.shape]}px)`
+          offset[props.shape]}px)`,
+        transition: "all 1s ease-out"
       }}
       onClick={() => props.userPlayKey(props.keyName)}
     >

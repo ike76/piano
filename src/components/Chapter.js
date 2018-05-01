@@ -11,12 +11,13 @@ class Chapter extends Component {
       lessonNumber: this.props.match.params.lessonNumber
     };
   }
+
   render() {
     const s = this.state;
     const p = this.props;
     return (
-      <section>
-        <p>title is {s.chapter.title}</p>
+      <section className="chapterbox">
+        <h1 className="title">{s.chapter.title}</h1>
         <Lesson lesson={s.chapter.lessons[s.lessonNumber]} />
       </section>
     );

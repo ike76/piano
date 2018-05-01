@@ -1,12 +1,7 @@
 import React from "react";
 
 const Page = p => {
-  return (
-    <div>
-      {p.page.jsx}
-      <button>{p.page.buttonText}</button>
-    </div>
-  );
+  return <div>{p.page.jsx}</div>;
 };
 
 export default Page;
