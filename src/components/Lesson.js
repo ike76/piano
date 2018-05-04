@@ -51,7 +51,7 @@ class Lesson extends Component {
         return (
           <div className="setup-test">
             <Setup setup={p.lesson.setup} advance={this.advance} />
-            <Test test={p.lesson.test} advance={this.advance} start={false} />
+            {this.chooseTestType(p)}
           </div>
         );
       case "test":
