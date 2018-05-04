@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Page from "./Page";
 import "../css/content.css";
-import { CSSTransition } from "react-transition-group";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 class Content extends Component {
   constructor(props) {
     super(props);
@@ -26,9 +26,6 @@ class Content extends Component {
     const p = this.props;
     return (
       <div>
-        <CSSTransition classNames="dooky" timeout={2000} in={true}>
-          <div className="dooky">TRANSITION</div>
-        </CSSTransition>
         <Page page={p.pages[s.pageNum]} />
         {this.state.pageNum > 0 ? (
           <button onClick={this.goBack}>← BACK</button>

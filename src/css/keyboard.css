@@ -50,6 +50,49 @@
   fill: #f2edd8;
 }
 
-.dot-enter {
-  fill: green;
+.winner1-exit,
+.winner2-exit,
+.winner3-exit,
+.winner4-exit,
+.winner5-exit {
+  opacity: 1;
+  transition: 0.5s;
+}
+.winner1-exit-active {
+  opacity: 0;
+  transform: translate(-72px, 231px);
+}
+.winner2-exit-active {
+  opacity: 0;
+  transform: translate(-72px, 179px);
+}
+.winner3-exit-active {
+  opacity: 0;
+  transform: translate(-72px, 127px);
+}
+.winner4-exit-active {
+  opacity: 0;
+  transform: translate(-72px, 74px);
+}
+.winner5-exit-active {
+  opacity: 0;
+  transform: translate(-72px, 22px);
+}
+.loser1-exit,
+.loser2-exit,
+.loser3-exit {
+  opacity: 1;
+  transition: 0.5s;
+}
+.loser1-exit-active {
+  opacity: 0;
+  transform: translate(733px, 178px);
+}
+.loser2-exit-active {
+  opacity: 0;
+  transform: translate(732px, 126px);
+}
+.loser3-exit-active {
+  opacity: 0;
+  transform: translate(732px, 73px);
 }

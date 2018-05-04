@@ -67,7 +67,7 @@ const octaves = {
         jsx: (
           <div>
             <p>
-              octaves This keyboard has 2 of each note. (2 full <em>octaves</em>)
+              This keyboard has 2 of each note. (2 full <em>octaves</em>)
             </p>
             <p>I'll play a note, then you play back the OTHER one.</p>
             <p>for example, if I play the blue note, you play the red one.</p>

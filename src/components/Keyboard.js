@@ -7,18 +7,34 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "../css/keyboard.css";
 
 export default class Keyboard extends Component {
+  replaceSharps(str) {
+    return str.replace("#", "sharp");
+  }
   render() {
     return (
       <div className="keyboard-frame">
         <div className="keyboard">
           {this.props.questionDots.map(key => (
             <Dot
+              key={key}
               keyName={key}
               className={"orange "}
               shape={"circle"}
               userPlayKey={this.props.userPlayKey}
             />
           ))}
+          <TransitionGroup>
+            {this.props.fadeDots.map(key => (
+              <CSSTransition key={key} classNames="fadein" timeout={500}>
+                <Dot
+                  keyName={key}
+                  className={"fade"}
+                  shape={"circle"}
+                  userPlayKey={this.props.userPlayKey}
+                />
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
           {this.props.answerDots.map(key => {
             return (
               <Dot
@@ -30,41 +46,57 @@ export default class Keyboard extends Component {
               />
             );
           })}
-          {this.props.correctDots.map(key => {
-            return (
-              <Dot
-                key={key}
-                keyName={key}
-                className={"blue tranform"}
-                shape={"smile"}
-                userPlayKey={() => null}
-                transform={true}
-                transformKey={1}
-              />
-            );
-          })}
+          <TransitionGroup>
+            {this.props.correctDots.map((note, i) => {
+              return (
+                <CSSTransition
+                  key={note + i}
+                  timeout={500}
+                  classNames={`winner${this.props.correctCount}`}
+                >
+                  <Dot
+                    keyName={note}
+                    endPosition={note}
+                    className={"blue"}
+                    shape={"smile"}
+                    userPlayKey={() => null}
+                  />
+                </CSSTransition>
+              );
+            })}
+          </TransitionGroup>
+
           {this.props.blinkingDots.map(key => {
             return (
               <Dot
+                style={{ zIndex: 2 }}
                 key={key}
                 keyName={key}
                 className={"red blink"}
-                shape={"circle"}
+                shape={"red"}
                 userPlayKey={() => null}
               />
             );
           })}
-          {this.props.wrongDots.map(key => {
-            return (
-              <Dot
-                key={key}
-                keyName={key}
-                className={"red "}
-                shape={"wrong"}
-                userPlayKey={() => null}
-              />
-            );
-          })}
+          <TransitionGroup>
+            {this.props.wrongDots.map(key => {
+              return (
+                <CSSTransition
+                  key={key}
+                  timeout={500}
+                  classNames={`loser${this.props.mistakeCount}`}
+                >
+                  <Dot
+                    key={key}
+                    keyName={key}
+                    className={"red "}
+                    shape={"wrong"}
+                    userPlayKey={() => null}
+                  />
+                </CSSTransition>
+              );
+            })}
+          </TransitionGroup>
 
           <svg width="700px" height="300px" viewBox="0 0 700 300" version="1.1">
             <g id="octave-1">

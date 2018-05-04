@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Keyboard from "./Keyboard";
+import Octopad from "./Octopad";
 import Scoreboard from "./Scoreboard";
 import { playSound } from "../js/audiosynth";
 
@@ -9,6 +10,7 @@ class Test extends Component {
     super(props);
     this.state = {
       questionDots: [],
+      fadeDots: [],
       answerDots: [],
       correctDots: [],
       wrongDots: [],
@@ -18,7 +20,7 @@ class Test extends Component {
       listening: false,
       playing: false,
       speed: 500,
-      timeBetweenRounds: 3000,
+      timeBetweenRounds: 1500,
       round: 0,
       macNoteIndex: 0,
       correctCount: 0,
@@ -32,8 +34,9 @@ class Test extends Component {
     this.checkAnswer = this.checkAnswer.bind(this);
   }
   componentDidMount() {
-    this.askQuestion();
+    this.props.start ? this.askQuestion() : null;
   }
+
   userPlayKey(noteName) {
     playSound(noteName);
     if (this.state.listening) {
@@ -52,7 +55,7 @@ class Test extends Component {
     console.log("correct", correct);
     console.log("student", student);
     if (correct.length !== student.length) return null;
-    const wrongNotes = student.filter((note, i) => note !== correct[i]);
+    const wrongNotes = student.filter((note, i) => !correct.includes(note));
     console.log("wrongNotes", wrongNotes);
     wrongNotes.length
       ? this.handleWrongAnswer(wrongNotes)
@@ -69,8 +72,7 @@ class Test extends Component {
         <p>
           ooh sorry. notice the (blinking) correct answer and then
           <button onClick={() => this.advanceRound(1, 0, "reset")}>
-            {" "}
-            CONTINUE{" "}
+            CONTINUE
           </button>
         </p>
       </div>
@@ -78,7 +80,8 @@ class Test extends Component {
     this.setState(
       {
         wrongDots: wrongNotes,
-        answerDots: [],
+        correctDots: [],
+        questionDots: [],
         mistakeCount: s.mistakeCount + 1,
         blinkingDots: correctNotChosen,
         frown: true
@@ -99,8 +102,8 @@ class Test extends Component {
     this.playSuccessSound();
     this.setState(
       {
-        correctDots: this.state.answerDots,
         correctCount: this.state.correctCount + 1,
+        correctDots: this.state.answerDots,
         answerDots: [],
         correctAnswer: [],
         studentAnswer: [],
@@ -113,8 +116,9 @@ class Test extends Component {
       }
     );
   }
+
   pass() {
-    setTimeout(() => this.props.advance(true), 1000);
+    setTimeout(() => this.props.advance(true), 3000);
   }
   fail() {
     setTimeout(() => this.props.advance(false), 1000);
@@ -124,26 +128,29 @@ class Test extends Component {
     delay = this.state.timeBetweenRounds,
     resetScore = false
   ) {
+    const round = this.state.round;
+    const qaLength = this.props.test.qa.length;
     setTimeout(() => {
       console.log("round advancing");
       this.setState(
         {
-          round: this.state.round + numToAdvance,
+          round: round + 1 < qaLength ? this.state.round + numToAdvance : 0,
           macNoteIndex: 0,
           altHeader: "",
+          fadeDots: [],
           questionDots: [],
           answerDots: [],
-          correctDots: [],
-          wrongDots: [],
           blinkingDots: [],
           correctAnswer: [],
-          studentAnswer: []
+          studentAnswer: [],
+          correctDots: []
         },
         () => {
           if (resetScore) {
             this.setState({
               frown: false,
-              correctCount: 0
+              correctCount: 0,
+              wrongDots: []
             });
           }
         }
@@ -154,42 +161,42 @@ class Test extends Component {
   macPlayKey(noteName) {
     noteName ? playSound(noteName) : null;
   }
-  enterTestNote(noteName) {
+  enterTestNote(noteName, show) {
     this.macPlayKey(noteName);
-    this.setState({ questionDots: [...this.state.questionDots, noteName] });
+    switch (show) {
+      case "show":
+        return this.setState({
+          questionDots: [...this.state.questionDots, noteName]
+        });
+      case "fade":
+        console.log("fade for", noteName);
+        return this.setState({
+          fadeDots: [...this.state.fadeDots, noteName]
+        });
+      case "hide":
+        return console.log("hide", noteName);
+      default:
+        this.setState({ questionDots: [...this.state.questionDots, noteName] });
+    }
     // this needs to know whether to paint dots or not.   later they will only paint the first dot.
-    console.log("enterTestNote", noteName);
   }
   askQuestion() {
     let qa = this.props.test.qa[this.state.round];
-    this.setState({ correctAnswer: qa.answer });
+    this.setState({ correctAnswer: qa.answer || qa.question });
     const timedFxn = () => {
       if (this.state.macNoteIndex >= qa.question.length - 1) {
         clearInterval(timer);
         this.setState({ listening: true });
       }
-      this.enterTestNote(qa.question[this.state.macNoteIndex]);
+      this.enterTestNote(
+        qa.question[this.state.macNoteIndex],
+        qa.show && qa.show[this.state.macNoteIndex]
+      );
       this.setState({ macNoteIndex: this.state.macNoteIndex + 1 });
     };
     let timer = setInterval(timedFxn, this.state.speed); // this plays the test notes
   }
-  chooseTestType() {
-    switch (this.props.test.type) {
-      case "keyboard":
-        return (
-          <Keyboard
-            questionDots={this.state.questionDots}
-            correctDots={this.state.correctDots}
-            answerDots={this.state.answerDots}
-            blinkingDots={this.state.blinkingDots}
-            wrongDots={this.state.wrongDots}
-            userPlayKey={this.userPlayKey}
-          />
-        );
-      default:
-        return null;
-    }
-  }
+
   render() {
     // if (whatever) return
     return (
@@ -203,13 +210,23 @@ class Test extends Component {
             <Scoreboard
               count={this.state.correctCount}
               icon={this.state.frown ? "frownFace" : "starEyes"}
-              limitCount={this.state.requiredCorrect}
+              required={this.state.requiredCorrect}
             />
-            {this.chooseTestType()}
+            <Keyboard
+              questionDots={this.state.questionDots}
+              correctDots={this.state.correctDots}
+              answerDots={this.state.answerDots}
+              blinkingDots={this.state.blinkingDots}
+              wrongDots={this.state.wrongDots}
+              fadeDots={this.state.fadeDots}
+              userPlayKey={this.userPlayKey}
+              correctCount={this.state.correctCount}
+              mistakeCount={this.state.mistakeCount}
+            />
             <Scoreboard
               count={this.state.mistakeCount}
               icon="skull"
-              limitCount={this.state.acceptableMistakes}
+              required={this.state.acceptableMistakes}
             />
           </div>
         </div>

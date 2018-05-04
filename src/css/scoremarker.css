@@ -1,4 +1,41 @@
-.marker-active {
+.marker-enter {
   border: 3px red solid;
-  transition: 2s;
+  transition: 0.5s;
+  transform: translateX(-100%);
+  position: absolute;
+}
+.marker-enter-active {
+  transform: translateX(0%);
+}
+
+.marker-exit {
+  border: 3px blue solid;
+  transform: translateX(0);
+  transition: 0.5s all;
+  position: absolute;
+}
+.marker-exit-active {
+  transform: translateX(100%);
+}
+
+.scoreHolder {
+  position: relative;
+}
+
+.score-enter {
+  transition: 1.5s ease-in-out all;
+  transition-delay: 0.5s;
+  opacity: 0;
+  transform: rotate(-360deg) scale(2);
+}
+.score-enter-active {
+  opacity: 1;
+  transform: rotate(360deg) scale(1);
+}
+.score-exit {
+  position: absolute;
+  opacity: 0;
+}
+.score-exit-active {
+  opacity: 0;
 }

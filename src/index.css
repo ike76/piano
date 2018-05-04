@@ -13,6 +13,7 @@ body {
   background-color: #fbfbfa;
   border-radius: 2em;
   border: 1px #e8d7b6 solid;
+  position: relative;
 }
 .keyboard-container {
   margin: 4rem;
@@ -22,6 +23,10 @@ body {
   font-family: "Poppins", sans-serif;
   text-shadow: 4px 4px 4px rgb(215, 215, 215);
   text-align: center;
+  position: absolute;
+  top: 5px;
+  left: 25px;
+  margin: 0;
 }
 .information {
   font-family: "Poppins", sans-serif;
@@ -36,7 +41,6 @@ body {
   text-align: center;
 }
 .chapterbox {
-  display: grid;
   text-align: center;
 }
 button {

@@ -3,7 +3,8 @@ import Content from "./Content";
 import Test from "./Test";
 import Setup from "./Setup";
 import Response from "./Response";
-
+import "../css/setup.css";
+import Octopad from "./Octopad";
 class Lesson extends Component {
   constructor(props) {
     super(props);
@@ -31,16 +32,30 @@ class Lesson extends Component {
   nextLesson() {
     const chapterLessonCount = console.log("doing next lesson");
   }
+  chooseTestType(p) {
+    switch (p.lesson.test.type) {
+      case "keyboard":
+        return (
+          <Test test={p.lesson.test} advance={this.advance} start={true} />
+        );
+      case "octopad":
+        return <Octopad test={p.lesson.test} advance={this.advance} />;
+    }
+  }
 
   cyclePicker(s, p) {
     switch (this.state.cycle) {
       case "content":
         return <Content pages={p.lesson.pages} advance={this.advance} />;
       case "setup":
-        return <Setup setup={p.lesson.setup} advance={this.advance} />;
+        return (
+          <div className="setup-test">
+            <Setup setup={p.lesson.setup} advance={this.advance} />
+            <Test test={p.lesson.test} advance={this.advance} start={false} />
+          </div>
+        );
       case "test":
-        console.log("switching to test");
-        return <Test test={p.lesson.test} advance={this.advance} />;
+        return this.chooseTestType(p);
       case "response":
         console.log("now we shall render a response");
         return (
@@ -50,6 +65,8 @@ class Lesson extends Component {
             nextLesson={this.nextLesson}
           />
         );
+      case "debug":
+        return <Test test={p.lesson.test} start={false} />;
       default:
         return null;
     }

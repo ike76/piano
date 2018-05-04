@@ -1,12 +1,11 @@
 .dot {
   position: absolute;
-
   font-size: 2.5rem;
+  /* transition: 0.5s all ease-in-out; */
 }
 
 .orange {
   color: orange;
-  transition: 2s;
 }
 .blue {
   color: rgb(102, 102, 255);
@@ -14,4 +13,107 @@
 /*  */
 .red {
   color: red;
+}
+
+.fade {
+}
+.fadein-enter {
+  opacity: 1;
+  transition: 0.3s;
+}
+.fadein-enter-active,
+.fadein-enter-done {
+  opacity: 0;
+}
+
+[data-key="success1"] {
+  transform: translate(-72px, 231px);
+}
+[data-key="success2"] {
+  transform: translate(-72px, 179px);
+}
+[data-key="success3"] {
+  transform: translate(-72px, 127px);
+}
+[data-key="success4"] {
+  transform: translate(-72px, 74px);
+}
+[data-key="success5"] {
+  transform: translate(-72px, 22px);
+}
+
+[data-key="A2"] {
+  transform: translate(606px, 220px);
+}
+[data-key="C1"] {
+  transform: translate(4px, 220px);
+}
+[data-key="D1"] {
+  transform: translate(55px, 220px);
+}
+[data-key="E1"] {
+  transform: translate(104px, 220px);
+}
+[data-key="F1"] {
+  transform: translate(154px, 220px);
+}
+[data-key="G1"] {
+  transform: translate(204px, 220px);
+}
+[data-key="A1"] {
+  transform: translate(255px, 220px);
+}
+[data-key="B1"] {
+  transform: translate(306px, 220px);
+}
+[data-key="C2"] {
+  transform: translate(354px, 220px);
+}
+[data-key="D2"] {
+  transform: translate(405px, 220px);
+}
+[data-key="E2"] {
+  transform: translate(454px, 220px);
+}
+[data-key="F2"] {
+  transform: translate(504px, 220px);
+}
+[data-key="G2"] {
+  transform: translate(554px, 220px);
+}
+[data-key="A2"] {
+  transform: translate(606px, 220px);
+}
+[data-key="B2"] {
+  transform: translate(656px, 220px);
+}
+[data-key="C#1"] {
+  transform: translate(23px, 140px);
+}
+[data-key="D#1"] {
+  transform: translate(86px, 140px);
+}
+[data-key="F#1"] {
+  transform: translate(173px, 140px);
+}
+[data-key="G#1"] {
+  transform: translate(229px, 140px);
+}
+[data-key="A#1"] {
+  transform: translate(286px, 140px);
+}
+[data-key="C#2"] {
+  transform: translate(373px, 140px);
+}
+[data-key="D#2"] {
+  transform: translate(436px, 140px);
+}
+[data-key="F#2"] {
+  transform: translate(523px, 140px);
+}
+[data-key="G#2"] {
+  transform: translate(579px, 140px);
+}
+[data-key="A#2"] {
+  transform: translate(637px, 140px);
 }
