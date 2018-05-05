@@ -137,7 +137,16 @@ class Octopad extends Component {
   showQuestion() {
     this.setState({ showQuestion: true });
   }
-  dotNames = ["U1", "U2", "U3", "U4", "D1", "D2", "D3", "D4"];
+  dotNames = [
+    { dot: "U1", key: "Q" },
+    { dot: "U2", key: "W" },
+    { dot: "U3", key: "E" },
+    { dot: "U4", key: "R" },
+    { dot: "D1", key: "A" },
+    { dot: "D2", key: "S" },
+    { dot: "D3", key: "D" },
+    { dot: "D4", key: "F" }
+  ];
   render() {
     const { jsx, qa } = this.props.test;
     return (

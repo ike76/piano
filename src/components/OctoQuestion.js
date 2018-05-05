@@ -20,24 +20,34 @@ class OctoQuestion extends Component {
           <div className="octopad">
             {dotNames.map(name => (
               <TransitionGroup className="dotContainer">
-                {studentAnswer[name] ? (
+                <div
+                  className="keyLetter"
+                  onMouseDown={() => handleClick(name.dot)}
+                >
+                  {name.key}
+                </div>
+                {studentAnswer[name.dot] ? (
                   <CSSTransition
-                    key={name + "blue"}
+                    key={name.dot + "blue"}
                     classNames="bluedot"
                     timeout={300}
                   >
                     <span
                       className="dotSpan"
-                      onMouseDown={() => handleClick(name)}
+                      onMouseDown={() => handleClick(name.dot)}
                     >
                       🔵
                     </span>
                   </CSSTransition>
                 ) : (
-                  <CSSTransition key={name} classNames="whitedot" timeout={300}>
+                  <CSSTransition
+                    key={name.dot}
+                    classNames="whitedot"
+                    timeout={300}
+                  >
                     <span
                       className="dotSpan"
-                      onMouseDown={() => handleClick(name)}
+                      onMouseDown={() => handleClick(name.dot)}
                     >
                       🔘
                     </span>
