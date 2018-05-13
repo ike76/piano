@@ -10,13 +10,14 @@ class Lesson extends Component {
     super(props);
     this.state = {
       // page: 0,
-      cycle: "test",
+      cycle: "content",
       done: false
     };
     this.advance = this.advance.bind(this);
     this.backToContent = this.backToContent.bind(this);
     this.nextLesson = this.nextLesson.bind(this);
   }
+
   advance(done = false) {
     console.log("advance was caled");
     let cycles = ["content", "setup", "test", "response"];

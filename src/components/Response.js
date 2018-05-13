@@ -5,7 +5,7 @@ const Response = props => {
     return (
       <div>
         <h3>HEY! you did it. congrats.</h3>
-        <p>onwards and upwards</p>
+        <p>onward and upward</p>
         <button onClick={props.nextLesson}>CONTINUE</button>
       </div>
     );
