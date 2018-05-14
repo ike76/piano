@@ -105,7 +105,7 @@ const shapes_2 = {
       },
       test: {
         type: "octopad",
-        name: "shapes_2_test1",
+        name: "Keyboard Cars",
         qa: [
           {
             question: image("car.png"),
@@ -253,7 +253,7 @@ const shapes_2 = {
       },
       test: {
         type: "octopad",
-        name: "shapes_2_test2",
+        name: "Keyboard Trucks",
         qa: [
           // lesson 2.  flip pix
           { question: image("carFlip.png"), answer: shapeAnswers.carFlip },
@@ -377,7 +377,7 @@ const shapes_2 = {
       },
       test: {
         type: "keyboard",
-        name: "shapes_2_test3",
+        name: "Keyboard Wagons",
         qa: [
           {
             question: scales.B1,

@@ -10,7 +10,7 @@ class Lesson extends Component {
     super(props);
     this.state = {
       // page: 0,
-      cycle: "test",
+      cycle: "content",
       done: false
     };
     this.advance = this.advance.bind(this);

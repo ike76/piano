@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Button from "@material-ui/core/Button";
 import * as actions from "../actions";
 class Cheaters extends Component {
   constructor(props) {
@@ -12,12 +13,20 @@ class Cheaters extends Component {
   render() {
     return (
       <div className="cheaterbuttons">
-        <button onClick={() => this.passTest("SHAPES 1", "Shapes")}>
+        <Button
+          variant="raised"
+          color="primary"
+          onClick={() => this.passTest("SHAPES 1", "Shapes")}
+        >
           Pass 1
-        </button>
-        <button onClick={() => this.passTest("SHAPES 1", "Upside Down Shapes")}>
+        </Button>
+        <Button
+          variant="raised"
+          color="primary"
+          onClick={() => this.passTest("SHAPES 1", "Upside Down Shapes")}
+        >
           Pass 2
-        </button>
+        </Button>
       </div>
     );
   }

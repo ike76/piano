@@ -21,6 +21,7 @@ class Navigation extends Component {
       });
       navList[chapters[chapName].title] = lessonObj;
     });
+    // TODO check local storage HERE, and dispatch if necc.
     this.props.dispatch(setNavList(navList));
     // this creates an object with each lesson-test having a value of null.
   }

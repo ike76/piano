@@ -11,6 +11,7 @@ const initialState = {
   currentQuestion: 0
 };
 
+// local storage should move
 const setLocalStorage = navList => {
   localStorage.setItem("navList", JSON.stringify(navList));
 };
@@ -33,7 +34,8 @@ export default function allReducer(state = initialState, action) {
     return newState;
   }
   if (action.type === actions.SET_NAV_LIST) {
-    return { ...state, navList: getLocalStorage() || action.navList };
+    // TODO this logic moves to navigation
+    return { ...state, navList: action.navList };
   }
   if (action.type === actions.OPEN_NAV) {
     return { ...state, navOpen: true };
