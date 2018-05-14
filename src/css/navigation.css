@@ -1,0 +1,28 @@
+.toggleNav {
+  position: fixed;
+  right: 2rem;
+  top: 3rem;
+  background: #ffffff;
+  border-radius: 2rem;
+  z-index: 5;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-rows: 1fr 1rem;
+  -ms-flex-align: center;
+  align-items: center;
+  grid-gap: 1rem;
+  border: 1px grey solid;
+}
+
+.passed::after {
+  content: " \2713";
+  color: #00da00;
+  font-size: 1.3rem;
+}
+
+.locked {
+  color: grey;
+}
+.nav-opener {
+  cursor: pointer;
+}

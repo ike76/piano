@@ -10,12 +10,11 @@ class Lesson extends Component {
     super(props);
     this.state = {
       // page: 0,
-      cycle: "content",
+      cycle: "test",
       done: false
     };
     this.advance = this.advance.bind(this);
     this.backToContent = this.backToContent.bind(this);
-    this.nextLesson = this.nextLesson.bind(this);
   }
 
   advance(done = false) {
@@ -29,9 +28,6 @@ class Lesson extends Component {
   }
   backToContent() {
     this.setState({ cycle: "content" });
-  }
-  nextLesson() {
-    const chapterLessonCount = console.log("doing next lesson");
   }
   chooseTestType(p) {
     switch (p.lesson.test.type) {
@@ -64,6 +60,8 @@ class Lesson extends Component {
             done={s.done}
             backToContent={this.backToContent}
             nextLesson={this.nextLesson}
+            testName={p.testName}
+            chapterName={p.chapterName}
           />
         );
       case "debug":

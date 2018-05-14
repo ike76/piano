@@ -1,12 +1,16 @@
 import React from "react";
-
+import { connect } from "react-redux";
+import { PASS_TEST, passTest } from "../actions";
 const Response = props => {
   if (props.done) {
+    const saveAndContinue = () => {
+      props.dispatch(passTest(props.chapterName, props.testName));
+    };
     return (
       <div>
         <h3>HEY! you did it. congrats.</h3>
         <p>onward and upward</p>
-        <button onClick={props.nextLesson}>CONTINUE</button>
+        <button onClick={() => saveAndContinue()}>SAVE and CONTINUE</button>
       </div>
     );
   } else {
@@ -20,4 +24,6 @@ const Response = props => {
   }
 };
 
-export default Response;
+const mapStateToProps = state => {};
+
+export default connect(mapStateToProps)(Response);

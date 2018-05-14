@@ -19,13 +19,13 @@ class OctoQuestion extends Component {
         <div className="octopad-holder">
           <div className="octopad">
             {dotNames.map(name => (
-              <TransitionGroup className="dotContainer">
-                <div
+              <TransitionGroup className="dotContainer" key={name.dot}>
+                {/* <div
                   className="keyLetter"
                   onMouseDown={() => handleClick(name.dot)}
                 >
                   {name.key}
-                </div>
+                </div> */}
                 {studentAnswer[name.dot] ? (
                   <CSSTransition
                     key={name.dot + "blue"}

@@ -28,8 +28,8 @@ const shapeAnswers = {
   wagonFlipNoDots: ["U1", "U2", "U3", "D4"]
 };
 
-const shapes = {
-  title: "SHAPES",
+const shapes_2 = {
+  title: "SHAPES 2",
   lessons: [
     {
       pages: [
@@ -37,24 +37,9 @@ const shapes = {
           jsx: (
             <div>
               <p>
-                <span className="fancy bigletter">T</span>he secret to learning
-                piano scales is to <em>visualize</em> the patterns.
+                <span className="fancy bigletter">N</span>ow we know the basic
+                shapes.
               </p>
-              <p>
-                When you break it down, there are really only FOUR shapes to
-                learn.
-              </p>
-              <div className="imageGrid">
-                <div className="imageBox">{image("lineDots.png")}</div>
-                <div className="imageBox">{image("wagonDots.png")}</div>
-                <div className="imageBox">{image("truckDots.png")}</div>
-                <div className="imageBox">{image("carDots.png")}</div>
-              </div>
-              <p>
-                Each shape has FOUR dots. all you have to remember is when the
-                dots are UP or DOWN.
-              </p>
-              <p>Next I'll show you a little trick how to remember them.</p>
             </div>
           )
         },
@@ -120,6 +105,7 @@ const shapes = {
       },
       test: {
         type: "octopad",
+        name: "shapes_2_test1",
         qa: [
           {
             question: image("car.png"),
@@ -267,6 +253,7 @@ const shapes = {
       },
       test: {
         type: "octopad",
+        name: "shapes_2_test2",
         qa: [
           // lesson 2.  flip pix
           { question: image("carFlip.png"), answer: shapeAnswers.carFlip },
@@ -390,6 +377,7 @@ const shapes = {
       },
       test: {
         type: "keyboard",
+        name: "shapes_2_test3",
         qa: [
           {
             question: scales.B1,
@@ -410,4 +398,4 @@ const shapes = {
   ] // end lessons array
 };
 
-export { shapes };
+export { shapes_2 };
